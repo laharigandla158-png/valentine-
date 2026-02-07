@@ -1,92 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Happy Kiss Day</title>
+  <meta charset="UTF-8">
+  <title>Rose Day</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+    }
 
-<style>
-body{
-  margin:0;
-  height:100vh;
-  background:linear-gradient(#ff9a9e,#fad0c4);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-family:Arial, sans-serif;
-  overflow:hidden;
-}
-.card{
-  background:#fff;
-  padding:25px;
-  border-radius:20px;
-  text-align:center;
-  width:320px;
-  box-shadow:0 10px 30px rgba(0,0,0,.3);
-}
-h2{color:#e63946;}
-button{
-  padding:10px 22px;
-  border:none;
-  border-radius:25px;
-  font-size:16px;
-  margin:10px;
-  cursor:pointer;
-}
-#yes{background:#ff4d6d;color:white;}
-#no{
-  background:#adb5bd;
-  position:absolute;
-}
-#photo{
-  display:none;
-  width:220px;
-  border-radius:15px;
-  margin-top:15px;
-}
-.kiss{
-  position:fixed;
-  font-size:30px;
-  animation:float 3s linear forwards;
-}
-@keyframes float{
-  from{opacity:1;transform:translateY(0);}
-  to{opacity:0;transform:translateY(-200px);}
-}
-</style>
+    .card {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      color: white;
+      max-width: 350px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .rose {
+      font-size: 60px;
+      animation: float 3s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0); }
+    }
+
+    p {
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 12px 25px;
+      margin: 10px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #yes {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #no {
+      background: #f1f1f1;
+      color: #333;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 16px;
+      display: none;
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="card" id="box">
-  <h2>Happy Kiss Day 💋</h2>
-  <p>Can I get a kiss?</p>
-  <button id="yes" onclick="yesClick()">YES</button>
-  <button id="no" onmouseover="moveNo()">NO</button>
-</div>
+  <div class="card">
+    <div class="rose">🌹</div>
+    <h2>Happy Rose Day</h2>
+    <p>
+      ARUN,<br>
+      this rose is not just a flower,<br>
+      it carries what my heart feels.
+    </p>
 
-<img id="photo" src="photo.jpg">
+    <button id="yes" onclick="yesClick()">Yes</button>
+    <button id="no" onclick="noClick()">No</button>
 
-<script>
-function moveNo(){
-  const no=document.getElementById("no");
-  no.style.left=Math.random()*(window.innerWidth-100)+"px";
-  no.style.top=Math.random()*(window.innerHeight-50)+"px";
-}
-function yesClick(){
-  document.getElementById("box").innerHTML=
-    "<h2>Just one kiss 💋</h2><p>Only for you 😘</p>";
-  document.getElementById("photo").style.display="block";
-  for(let i=0;i<25;i++){
-    let k=document.createElement("div");
-    k.className="kiss";
-    k.innerHTML="😘";
-    k.style.left=Math.random()*window.innerWidth+"px";
-    k.style.bottom="0px";
-    document.body.appendChild(k);
-    setTimeout(()=>k.remove(),3000);
-  }
-}
-</script>
+    <div id="msg" class="message"></div>
+  </div>
+
+  <script>
+    function yesClick() {
+      document.getElementById("msg").style.display = "block";
+      document.getElementById("msg").innerHTML =
+        "Thank you for accepting my rose.<br>It means more to me than you know.";
+    }
+
+    function noClick() {
+      document.getElementById("msg").style.display = "block";
+      document.getElementById("msg").innerHTML =
+        "I understand…<br>Even if you say no,<br>this rose will always stay for you.";
+    }
+  </script>
 
 </body>
 </html>
