@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rose Day – Arun</title>
+<style>
+body{margin:0;height:100vh;background:url('photo.jpg') center/cover no-repeat;overflow:hidden;font-family:Arial;}
+.overlay{background:rgba(0,0,0,.6);height:100%;display:flex;justify-content:center;align-items:center;}
+.card{color:white;text-align:center;background:rgba(255,255,255,.15);padding:25px;border-radius:20px;width:85%}
+button{padding:12px 25px;margin:10px;border:none;border-radius:25px;font-size:16px}
+#yes{background:#ff4d6d;color:white}
+#no{background:#eee}
+.heart{position:fixed;bottom:-10px;animation:float 5s linear infinite;color:#ff4d6d}
+@keyframes float{to{transform:translateY(-100vh);opacity:0}}
+</style>
+</head>
+<body>
+<div class="overlay">
+<div class="card">
+<h2>🌹 Rose Day 🌹</h2>
+<p>ARUN… this rose is for you,<br>even if I can’t give it to you in person.</p>
+<button id="yes" onclick="alert('I still choose you 💔')">YES</button>
+<button id="no" onclick="shrink()">NO</button>
+</div>
+</div>
+<script>
+let s=1;
+function shrink(){s-=0.15;document.getElementById("no").style.transform=`scale(${s})`;if(s<0.3)no.style.display="none";}
+setInterval(()=>{let h=document.createElement("div");h.className="heart";h.innerHTML="❤️";h.style.left=Math.random()*100+"vw";document.body.appendChild(h);setTimeout(()=>h.remove(),5000)},400);
+</script>
+</body>
+</html>
