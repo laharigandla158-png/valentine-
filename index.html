@@ -1,31 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Rose Day – Arun</title>
+<meta charset="UTF-8">
+<title>Happy Kiss Day</title>
+
 <style>
-body{margin:0;height:100vh;background:url('photo.jpg') center/cover no-repeat;overflow:hidden;font-family:Arial;}
-.overlay{background:rgba(0,0,0,.6);height:100%;display:flex;justify-content:center;align-items:center;}
-.card{color:white;text-align:center;background:rgba(255,255,255,.15);padding:25px;border-radius:20px;width:85%}
-button{padding:12px 25px;margin:10px;border:none;border-radius:25px;font-size:16px}
-#yes{background:#ff4d6d;color:white}
-#no{background:#eee}
-.heart{position:fixed;bottom:-10px;animation:float 5s linear infinite;color:#ff4d6d}
-@keyframes float{to{transform:translateY(-100vh);opacity:0}}
+body{
+  margin:0;
+  height:100vh;
+  background:linear-gradient(#ff9a9e,#fad0c4);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:Arial, sans-serif;
+  overflow:hidden;
+}
+.card{
+  background:#fff;
+  padding:25px;
+  border-radius:20px;
+  text-align:center;
+  width:320px;
+  box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+h2{color:#e63946;}
+button{
+  padding:10px 22px;
+  border:none;
+  border-radius:25px;
+  font-size:16px;
+  margin:10px;
+  cursor:pointer;
+}
+#yes{background:#ff4d6d;color:white;}
+#no{
+  background:#adb5bd;
+  position:absolute;
+}
+#photo{
+  display:none;
+  width:220px;
+  border-radius:15px;
+  margin-top:15px;
+}
+.kiss{
+  position:fixed;
+  font-size:30px;
+  animation:float 3s linear forwards;
+}
+@keyframes float{
+  from{opacity:1;transform:translateY(0);}
+  to{opacity:0;transform:translateY(-200px);}
+}
 </style>
 </head>
+
 <body>
-<div class="overlay">
-<div class="card">
-<h2>🌹 Rose Day 🌹</h2>
-<p>ARUN… this rose is for you,<br>even if I can’t give it to you in person.</p>
-<button id="yes" onclick="alert('I still choose you 💔')">YES</button>
-<button id="no" onclick="shrink()">NO</button>
+
+<div class="card" id="box">
+  <h2>Happy Kiss Day 💋</h2>
+  <p>Can I get a kiss?</p>
+  <button id="yes" onclick="yesClick()">YES</button>
+  <button id="no" onmouseover="moveNo()">NO</button>
 </div>
-</div>
+
+<img id="photo" src="photo.jpg">
+
 <script>
-let s=1;
-function shrink(){s-=0.15;document.getElementById("no").style.transform=`scale(${s})`;if(s<0.3)no.style.display="none";}
-setInterval(()=>{let h=document.createElement("div");h.className="heart";h.innerHTML="❤️";h.style.left=Math.random()*100+"vw";document.body.appendChild(h);setTimeout(()=>h.remove(),5000)},400);
+function moveNo(){
+  const no=document.getElementById("no");
+  no.style.left=Math.random()*(window.innerWidth-100)+"px";
+  no.style.top=Math.random()*(window.innerHeight-50)+"px";
+}
+function yesClick(){
+  document.getElementById("box").innerHTML=
+    "<h2>Just one kiss 💋</h2><p>Only for you 😘</p>";
+  document.getElementById("photo").style.display="block";
+  for(let i=0;i<25;i++){
+    let k=document.createElement("div");
+    k.className="kiss";
+    k.innerHTML="😘";
+    k.style.left=Math.random()*window.innerWidth+"px";
+    k.style.bottom="0px";
+    document.body.appendChild(k);
+    setTimeout(()=>k.remove(),3000);
+  }
+}
 </script>
+
 </body>
 </html>
